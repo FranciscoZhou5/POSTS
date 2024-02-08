@@ -1,25 +1,29 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-    width: 180px; 
-    background-color: ${props => props.theme.colors.cinza};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
+    width: 200px;
+    background-color: ${props => props.theme.colors.branco};
+    border: 1px solid ${props => props.theme.colors.cinzaClaro};
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
     margin: 10px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.457);
-`
+
+    &:hover {
+        transform: scale(1.05);
+    }
+`;
 
 export const Img = styled.img`
-    height: 100px;
-    max-width: 120px;
-`
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-bottom: 1px solid ${props => props.theme.colors.cinzaClaro};
+`;
 
 export const UserNameText = styled.p`
-    color: ${props => props.theme.colors.azulFraco};
+    color: ${props => props.theme.colors.azulEscuro};
     font-weight: bold;
-`
+    font-size: 16px;
+    margin-bottom: 5px;
+`;

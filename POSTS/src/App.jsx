@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
-
+import Register from './pages/register/index'
 import { createGlobalStyle } from 'styled-components'
 import Header from './components/header'
-import Form from './pages/form'
+import Login from './pages/login/index'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -26,7 +26,8 @@ function App() {
     <Header/>
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route  path='/form' element={<Form/>} />
+          <Route  path='/login' element={<Login/>} />
+          <Route path='/register' element={<Register/>} />
         </Routes>
     </BrowserRouter>
   )
