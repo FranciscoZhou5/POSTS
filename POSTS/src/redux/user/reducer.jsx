@@ -1,16 +1,14 @@
 import userActionsType from './actions-types';
-import { useNavigate } from 'react-router-dom';
 
 const initialState = {
     user: {},
     error: '',
 };
 
-
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case userActionsType.LOGIN:
-            let navigate = useNavigate();
             const { displayName, password } = action.payload;
             if (state.user.hasOwnProperty(displayName)) {
                 // Verifica se o usuário existe
@@ -32,7 +30,6 @@ const userReducer = (state = initialState, action) => {
 
         case userActionsType.REGISTER:
             const userIsAlreadyRegister = state.user.hasOwnProperty(action.payload.displayName);
-
             if (userIsAlreadyRegister) {
                 console.log(`Usuário '${action.payload.displayName}' já existe`);
                 return { ...state, error: `Usuário com apelido '${action.payload.displayName}' já existe.` };

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import * as Styled from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser, setError } from '../../redux/user/actions'
+import { useNavigate } from 'react-router-dom';  
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("")
@@ -10,6 +11,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const { error } = useSelector((rootReducer) => rootReducer.userReducer)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,12 +20,16 @@ const Register = () => {
     if (password !== confirmPassword) {
       dispatch(setError("As senhas precisam ser idênticas!"))
       return
-    } else{
-
+    } else {
       dispatch(registerUser({ displayName, email, password }))
-    }
+      dispatch(setError(""))
+    } 
+    if (!error) {
+      navigate('/')
+ 
   }
 
+  }
   return (
     <Styled.RegisterContainer onSubmit={handleSubmit}>
       <Styled.H2>Crie sua conta</Styled.H2>
